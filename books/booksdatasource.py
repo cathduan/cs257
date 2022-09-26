@@ -2,7 +2,7 @@
 '''
     booksdatasource.py
     Jeff Ondich, 21 September 2022
-
+    Authors: Cathy Duan, Ali Ramazani
     For use in the "books" assignment at the beginning of Carleton's
     CS 257 Software Design class, Fall 2022.
 '''
@@ -49,7 +49,35 @@ class BooksDataSource:
             suitable instance variables for the BooksDataSource object containing
             a collection of Author objects and a collection of Book objects.
         '''
-        pass
+       
+       # Adds lines of a file into a list
+        fileLines = []
+        with open(books_csv_file_name) as file:
+            for line in file:
+                fileLines.append(line.rstrip()) 
+
+       # can combine this with the code above. 
+        for i in range(len(fileLines)):
+            fileLines[i] = fileLines[i].split(",")
+        
+        #Accounts for book titles that include commas
+        for i in range(len(fileLines)):
+            if len(fileLines[i]) > 3:
+                fileLines[i] = fileLines[i][0] + "," + fileLines[i][1], fileLines[i][2], fileLines[i][3]
+                
+        #print(fileLines)
+        self.csv_file = books_csv_file_name
+        self.fileLines = fileLines
+
+        authorsList = []
+        booksList = []
+        for list in fileLines:
+            authorsList.append(list[2])
+            booksList.append(list[0])
+        
+        #print(authorsList)
+        #print(booksList)
+        #self.authors = authorsList
 
     def authors(self, search_text=None):
         ''' Returns a list of all the Author objects in this data source whose names contain
@@ -57,6 +85,13 @@ class BooksDataSource:
             returns all of the Author objects. In either case, the returned list is sorted
             by surname, breaking ties using given name (e.g. Ann Brontë comes before Charlotte Brontë).
         '''
+        #book1 = BooksDataSource("books1.csv")
+        
+        #self.authors = 
+        print(self.authors.sort())
+
+        
+
         return []
 
     def books(self, search_text=None, sort_by='title'):
@@ -71,6 +106,12 @@ class BooksDataSource:
                 default -- same as 'title' (that is, if sort_by is anything other than 'year'
                             or 'title', just do the same thing you would do for 'title')
         '''
+
+
+
+
+
+
         return []
 
     def books_between_years(self, start_year=None, end_year=None):
@@ -84,5 +125,19 @@ class BooksDataSource:
             during start_year should be included. If both are None, then all books
             should be included.
         '''
-        return []
 
+
+
+
+
+
+        return []
+    
+def main():
+    book1 = BooksDataSource("books1.csv")
+    #print(book1)
+    book1.authors()
+    
+if __name__ == '__main__':
+    main()
+    
