@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+
 '''
     booksdatasource.py
     Jeff Ondich, 21 September 2022
@@ -64,6 +64,7 @@ class BooksDataSource:
         with open(books_csv_file_name) as file:
             for line in file:
                 fileLines.append(line.rstrip()) 
+            file.close()
 
        # can combine this with the code above. 
         for i in range(len(fileLines)):
@@ -79,26 +80,75 @@ class BooksDataSource:
             self.titleList.append(list[0])
             self.yearList.append(list[1])
             
-            # b = Book(list[i][i], list[i+1][i], list[i+2][i])
+        
         
         for i in range(len(fileLines)):
             #if authors exist, don't create a new author object?? just add it to the existing author object
             b = Book(self.titleList[i], self.yearList[i], self.authorsList[i])
-            a = Author
             self.bookList.append(b)
-            #print(b.title)
-
-        #author objects!!!
         
-        #print(self.authorsList)
-        #print(self.titleList)
-        #print("this is the object: " , repr(self.bookList))
-        #print(Book("Jane Eyre", "1847", "Charlotte Brontë (1816-1855)"))
+        
+        self.authorObjectList = []
+        # To create the author objects
+        for author in self.authorsList:
+            authorSplitLines = author.split(" ")
+            if len(authorSplitLines) == 3:  #Case 1: if the author is the only author and has no middle name
+                date = authorSplitLines[2].split("-")
+                date[0] = date[0].replace("(", "")
+                date[-1] = date[-1].replace(")", "")
+                if date[-1] == "": # if there is no death year, set to None
+                    date[-1] = None
     
-     
-    # def __repr__(self):
-    #     return f'Book("{self.titleList}","{self.yearList}", "{self.authorsList}")'
+                a = Author(authorSplitLines[1], authorSplitLines[0], date[0], date[-1])
+                if a not in self.authorObjectList:
+                    self.authorObjectList.append(a)
+                
+            elif len(authorSplitLines) == 4: #Case 2: if the author has a middle name
+                date = authorSplitLines[3].split("-")
+                date[0] = date[0].replace("(", "")
+                date[-1] = date[-1].replace(")", "")
+                if date[-1] == "":
+                    date[-1] = None
 
+                a = Author(authorSplitLines[2], authorSplitLines[0] + " " + authorSplitLines[1], date[0], date[-1])
+                if a not in self.authorObjectList:
+                    self.authorObjectList.append(a)
+                
+            elif len(authorSplitLines) > 4: #Case 3: if there are multiple authors, then parse each one individually
+                authorSplitLines = " ".join(authorSplitLines) # join the split strings
+                authorSplitLines = authorSplitLines.split("and")
+                author1, author2 = authorSplitLines[0].split(" "), authorSplitLines[1].split(" ")
+                author1.remove(author1[3]) # accounts for the extra space that shifts the indexes
+                author2.remove(author2[0]) # accounts for the extra space that shifts the indexes
+                
+                date1, date2 = author1[2].split("-"), author2[2].split("-") 
+                date1[0], date2[0] = date1[0].replace("(", ""), date2[0].replace("(", "")
+                date1[-1], date2[-1] = date1[-1].replace(")", ""), date2[-1].replace(")", "")
+                if date1[-1] == "":
+                        date1[-1] = None
+                if date2[-1] == "":
+                    date2[-1] = None
+
+                a1 = Author(author1[1], author1[0], date1[0], date1[-1])
+                a2 = Author(author2[1], author2[0], date2[0], date2[-1]) 
+                if a1 not in self.authorObjectList:
+                    self.authorObjectList.append(a1)
+                if a2 not in self.authorObjectList:
+                    self.authorObjectList.append(a2)
+                
+        lst = []
+        for i in range(0, len(self.authorObjectList)):
+            given_name = (self.authorObjectList[i].given_name)
+            surname = (self.authorObjectList[i].surname)
+            birth = (self.authorObjectList[i].birth_year)
+            death = (self.authorObjectList[i].death_year)
+            lst.append(given_name)
+            lst.append(surname)
+            lst.append(birth)
+            lst.append(death)
+        print(lst)
+            
+    
         
 
     def authors(self, search_text=None):
@@ -113,15 +163,12 @@ class BooksDataSource:
         # sortedAuthorList = authorsList.sorted()
         # print(sortedAuthorList)
         resultAuthorList = []
-
-        book1 = BooksDataSource("books1.csv")
-        authorList = book1.authorsList
         
         if search_text == None:
-            return sorted(authorList)
+            return sorted(self.authorObjectList.surname)
         else:
-            for author in authorList:
-                if author.lower().__contains__(search_text.lower()): #== search_text.lower():
+            for author in self.authorsList:
+                if  (search_text.lower()) in author.lower() : #== search_text.lower():
                     resultAuthorList.append(author)
         #lol need to figure out how to incorporate the author objects haha
         return sorted(resultAuthorList)
@@ -148,7 +195,7 @@ class BooksDataSource:
             for book in self.bookList:
                 if book.lower() == search_text.lower():
                     resultBookList.append(book.title) # still need to do the sorting
-
+    
         if sort_by == "title":
             resultBookList.sorted()
         elif sort_by == "year":
@@ -179,10 +226,16 @@ class BooksDataSource:
         return []
     
 def main():
-    book1 = BooksDataSource("books1.csv")
-    print(book1.authors("J"))    
-    # print(book1.books)
-    # print(book1.books_between_years)
+    #get command-line arguments
+    data_source = BooksDataSource("books1.csv")
+    print(len(data_source.authors()))
+    '''
+    if user wants book by searchstring:
+        books = data_source.books(searchstring)
+        print books
+    elif ...
+    '''
+
 if __name__ == '__main__':
     main()
     
