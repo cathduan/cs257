@@ -61,6 +61,7 @@ class BooksDataSource:
         self.yearList = []
         self.bookObjectList = []
         
+        # Adds all lines in the file to a list
         with open(books_csv_file_name) as file:
             for line in file:
                 fileLines.append(line.rstrip()) 
@@ -70,7 +71,7 @@ class BooksDataSource:
         for i in range(len(fileLines)):
             fileLines[i] = fileLines[i].split(",")
         
-        #Accounts for book titles that include commas
+        # Accounts for book titles that include commas
         for i in range(len(fileLines)):
             
             if len(fileLines[i]) > 3:
@@ -84,7 +85,7 @@ class BooksDataSource:
         
         
         self.authorObjectList = []
-        # To create the author objects
+        # Creates Author and Book objects
         for i in range(len(self.authorsList)):
             authorSplitLines = self.authorsList[i].split(" ")
             if len(authorSplitLines) == 3:  #Case 1: if the author is the only author and has no middle name
@@ -146,6 +147,7 @@ class BooksDataSource:
             by surname, breaking ties using given name (e.g. Ann Brontë comes before Charlotte Brontë).
         '''
         authorList = []
+        resultAuthorList = []
         for author_object in range(0, len(self.authorObjectList)):
             given_name = (self.authorObjectList[author_object].given_name)
             surname = (self.authorObjectList[author_object].surname)
@@ -154,18 +156,16 @@ class BooksDataSource:
         
         if search_text == None:
             for author in sorted(authorList):
-                print( self.authorObjectList[author[2]].given_name, self.authorObjectList[author[2]].surname)
-
-
+                resultAuthorList.append([self.authorObjectList[author[2]].given_name, self.authorObjectList[author[2]].surname])
         else:
             for author in sorted(authorList):
                 full_name = self.authorObjectList[author[2]].given_name + " " + self.authorObjectList[author[2]].surname
                 if (search_text.lower()) in author[0].lower() or (search_text.lower()) in author[1].lower():
-                    print(self.authorObjectList[author[2]].given_name, self.authorObjectList[author[2]].surname)
+                    resultAuthorList.append([self.authorObjectList[author[2]].given_name, self.authorObjectList[author[2]].surname])
                 elif (search_text.lower() in full_name.lower()):
-                    print(self.authorObjectList[author[2]].given_name, self.authorObjectList[author[2]].surname)
+                    resultAuthorList.append([self.authorObjectList[author[2]].given_name, self.authorObjectList[author[2]].surname])
                    
-
+        return print(resultAuthorList)
 
 
     def books(self, search_text=None, sort_by='title'):
@@ -181,11 +181,10 @@ class BooksDataSource:
                             or 'title', just do the same thing you would do for 'title')
         '''
         bookList = []
-        
+        resultBookList = []
         for book_object in range(0, len(self.bookObjectList)):
             title = (self.bookObjectList[book_object].title)
             year = (self.bookObjectList[book_object].publication_year)
-            # author_surname = (self.bookList[i].author[0].surname)
             bookList.append((title, year, book_object))
             
         yearSortList = sorted(bookList, key=lambda x:x[1])
@@ -193,21 +192,23 @@ class BooksDataSource:
         if search_text == None:
             if sort_by == "title" or sort_by != "year":
                 for book in sorted(bookList):
-                    print (self.bookObjectList[book[2]].title, self.bookObjectList[book[2]].publication_year)
+                    resultBookList.append([self.bookObjectList[book[2]].title, self.bookObjectList[book[2]].publication_year])
                
             elif sort_by == "year":
                 for book in yearSortList:
-                    print (self.bookObjectList[book[2]].title, self.bookObjectList[book[2]].publication_year)
+                    resultBookList.append([self.bookObjectList[book[2]].title, self.bookObjectList[book[2]].publication_year])
                
         else:
             if sort_by == "title" or sort_by != "year":
                 for book in sorted(bookList):
                     if (search_text.lower()) in book[0].lower():
-                        print (self.bookObjectList[book[2]].title, self.bookObjectList[book[2]].publication_year)
+                        resultBookList.append([self.bookObjectList[book[2]].title, self.bookObjectList[book[2]].publication_year])
             elif sort_by == "year":
                 for book in yearSortList:
                     if (search_text.lower()) in book[0].lower():
-                        print (self.bookObjectList[book[2]].title, self.bookObjectList[book[2]].publication_year)
+                        resultBookList.append([self.bookObjectList[book[2]].title, self.bookObjectList[book[2]].publication_year])
+               
+        return print(resultBookList)
                         
  
 
@@ -224,40 +225,36 @@ class BooksDataSource:
         '''
 
         bookList = []
+        resultBookList = []
         for book_object in range(0, len(self.bookObjectList)):
             year = (self.bookObjectList[book_object].publication_year)
             title = (self.bookObjectList[book_object].title)
             bookList.append((title, year, book_object))
         
         yearSortList = sorted(bookList, key=lambda x:x[1])
-    
-        
         
         if start_year == None and end_year == None:
             for book in yearSortList:
-                print(self.bookObjectList[book[2]].title, self.bookObjectList[book[2]].publication_year)
+                resultBookList.append([self.bookObjectList[book[2]].title, self.bookObjectList[book[2]].publication_year])
                 
         elif start_year != None and end_year == None:
             for book in yearSortList:
                 if int(book[1]) >= start_year:
-                    print(self.bookObjectList[book[2]].title, self.bookObjectList[book[2]].publication_year)
+                    resultBookList.append([self.bookObjectList[book[2]].title, self.bookObjectList[book[2]].publication_year])
+               
         elif start_year == None and end_year != None:
             for book in yearSortList:
                 if int(book[1]) <= end_year:
-                    print(self.bookObjectList[book[2]].title, self.bookObjectList[book[2]].publication_year)
+                    resultBookList.append([self.bookObjectList[book[2]].title, self.bookObjectList[book[2]].publication_year])
+        return print(resultBookList)
     
 def main():
     #get command-line arguments
+    #Testing all default cases:
     data_source = BooksDataSource("books1.csv")
-    data_source.books_between_years(None, 2003)
-    #(data_source.books_between_years(None, None))
-    #data_source.books("J", "title")
-    '''
-    if user wants book by searchstring:
-        books = data_source.books(searchstring)
-        print books
-    elif ...
-    '''
+    data_source.authors()
+    data_source.books(None, "")
+    data_source.books_between_years(None, None)
 
 if __name__ == '__main__':
     main()
