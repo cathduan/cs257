@@ -165,7 +165,7 @@ class BooksDataSource:
                 elif (search_text.lower() in full_name.lower()):
                     resultAuthorList.append([self.authorObjectList[author[2]].given_name, self.authorObjectList[author[2]].surname])
                    
-        return print(resultAuthorList)
+        return resultAuthorList
 
 
     def books(self, search_text=None, sort_by='title'):
@@ -208,7 +208,7 @@ class BooksDataSource:
                     if (search_text.lower()) in book[0].lower():
                         resultBookList.append([self.bookObjectList[book[2]].title, self.bookObjectList[book[2]].publication_year])
                
-        return print(resultBookList)
+        return resultBookList
                         
  
 
@@ -246,15 +246,17 @@ class BooksDataSource:
             for book in yearSortList:
                 if int(book[1]) <= end_year:
                     resultBookList.append([self.bookObjectList[book[2]].title, self.bookObjectList[book[2]].publication_year])
-        return print(resultBookList)
+        return resultBookList
     
 def main():
     #get command-line arguments
     #Testing all default cases:
     data_source = BooksDataSource("books1.csv")
-    data_source.authors()
-    data_source.books(None, "")
-    data_source.books_between_years(None, None)
+    print("Testing the authors method: ", data_source.authors())
+    print("------------------------------------------------------------------------------------")
+    print("Testing the books method: ", data_source.books(None, ""))
+    print("------------------------------------------------------------------------------------")
+    print("Testing the books_between_years method: ", data_source.books_between_years(None, None))
 
 if __name__ == '__main__':
     main()
