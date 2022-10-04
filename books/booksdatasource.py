@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python3
 '''
     booksdatasource.py
@@ -22,6 +23,12 @@ class Author:
         ''' For simplicity, we're going to assume that no two authors have the same name. '''
         return self.surname == other.surname and self.given_name == other.given_name
 
+    def __lt__(self, other):
+        ''' For simplicity, we're going to assume that no two authors have the same last name. '''
+        if self.surname == other.surname:
+            return self.given_name < other.given_name
+        return self.surname < other.surname 
+
 class Book:
     def __init__(self, title='', publication_year=None, authors=[]):
         ''' Note that the self.authors instance variable is a list of
@@ -39,14 +46,10 @@ class Book:
 class BooksDataSource:
     def __init__(self, books_csv_file_name):
         ''' The books CSV file format looks like this:
-
                 title,publication_year,author_description
-
             For example:
-
                 All Clear,2010,Connie Willis (1945-)
                 "Right Ho, Jeeves",1934,Pelham Grenville Wodehouse (1881-1975)
-
             This __init__ method parses the specified CSV file and creates
             suitable instance variables for the BooksDataSource object containing
             a collection of Author objects and a collection of Book objects.
@@ -146,24 +149,17 @@ class BooksDataSource:
             returns all of the Author objects. In either case, the returned list is sorted
             by surname, breaking ties using given name (e.g. Ann Brontë comes before Charlotte Brontë).
         '''
-        authorList = []
+
         resultAuthorList = []
-        for author_object in range(0, len(self.authorObjectList)):
-            given_name = (self.authorObjectList[author_object].given_name)
-            surname = (self.authorObjectList[author_object].surname)
-            authorList.append((surname, given_name, author_object))
-      
         
         if search_text == None:
-            for author in sorted(authorList):
-                resultAuthorList.append([self.authorObjectList[author[2]].given_name, self.authorObjectList[author[2]].surname])
+            for author in sorted(self.authorObjectList):
+                resultAuthorList.append(author)
         else:
-            for author in sorted(authorList):
-                full_name = self.authorObjectList[author[2]].given_name + " " + self.authorObjectList[author[2]].surname
-                if (search_text.lower()) in author[0].lower() or (search_text.lower()) in author[1].lower():
-                    resultAuthorList.append([self.authorObjectList[author[2]].given_name, self.authorObjectList[author[2]].surname])
-                elif (search_text.lower() in full_name.lower()):
-                    resultAuthorList.append([self.authorObjectList[author[2]].given_name, self.authorObjectList[author[2]].surname])
+            for author in sorted(self.authorObjectList):
+                full_name = author.given_name + " " + author.surname
+                if (search_text.lower() in full_name.lower()):
+                    resultAuthorList.append(author)
                    
         return resultAuthorList
 
@@ -172,9 +168,7 @@ class BooksDataSource:
         ''' Returns a list of all the Book objects in this data source whose
             titles contain (case-insensitively) search_text. If search_text is None,
             then this method returns all of the books objects.
-
             The list of books is sorted in an order depending on the sort_by parameter:
-
                 'year' -- sorts by publication_year, breaking ties with (case-insenstive) title
                 'title' -- sorts by (case-insensitive) title, breaking ties with publication_year
                 default -- same as 'title' (that is, if sort_by is anything other than 'year'
@@ -217,7 +211,6 @@ class BooksDataSource:
             years are between start_year and end_year, inclusive. The list is sorted
             by publication year, breaking ties by title (e.g. Neverwhere 1996 should
             come before Thief of Time 1996).
-
             If start_year is None, then any book published before or during end_year
             should be included. If end_year is None, then any book published after or
             during start_year should be included. If both are None, then all books
