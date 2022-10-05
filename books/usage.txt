@@ -5,8 +5,9 @@ NAME
 
 SYNOPSIS
 	Python3 books.py --help
-	Python3 books.py [--title | --authors] <keyword> --sort [title | year]
-	Python3 books.py years <start year> <end year>
+	Python3 books.py author [keyword]
+	Python3 books.py book [keyword] [--title_sort | --year_sort]
+	Python3 books.py year <start_year> <end_year>
 
 
 DESCRIPTION
@@ -23,10 +24,17 @@ DESCRIPTION
 
 	--title, -t		Prints a list of books whose titles contain the given <keyword> (case-insensitive). 
 
-	--author, -a 		Prints an alphabetical list of authors whose names contain the given <keyword> (case-insensitive). For each such author, prints a list of the author's books.
+	author, -a 		Prints an alphabetical list of authors whose names contain the given <keyword> (case-insensitive). 
+				For each such author, prints a list of the author's books.
 
-	--year, -y		Prints a list of books published between the <start year> and <end year> in order of publication year (inclusive).
+	book, -b 		Prints an alphabetical list of books whose titles contain the given <keyword> (case-insensitive) as the default.
+				If specified --year_sort, the book list will be sorted by publication year.
 
-	--sort, -s		Sorts the book list based on the given title or year.
+	year, -y		Prints a list of books published between the <start_year> and <end_year> in order of publication year (inclusive). 
+				If the user does not specify a start year or an end year, they must type in None in the field as a placeholder. 
+
+	--title_sort, -ts	Sorts the book list alphabetically based on book titles
+	
+	--year_sort, -ys 	Sorts the book list based on the publication year from oldest to youngest
 
 (END)
