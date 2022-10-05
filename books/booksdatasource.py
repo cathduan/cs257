@@ -228,7 +228,7 @@ def main():
     print("------------------------------------------------------------------------------------")
     print("Testing the books method: ", data_source.books(None, ""))
     print("------------------------------------------------------------------------------------")
-    print("Testing the books_between_years method: ", data_source.books_between_years(1800, 1900))
+    print("Testing the books_between_years method: ", data_source.books_between_years(1800, None))
 
 if __name__ == '__main__':
     main()
