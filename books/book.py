@@ -1,55 +1,56 @@
 '''
 book.py
+Allows bookdatasource.py to be used with the command line and implements the commands from usage.txt
 Authors: Cathy Duan and Ali Ramazani
+Revised by Cathy Duan and Ali Ramazani
 '''
 
 import sys
 from booksdatasource import Author, Book, BooksDataSource
   
-user_input = sys.argv[1:]
+user_input = sys.argv[1:] # Ignores book.py in the command line
 
 data_source = BooksDataSource("books1.csv")
 
-#prints the contents of a book object as a single line
+# Prints the contents of a book object as a single line
 def book_print(books):
     for book in books:
-        if (len(book.authors) > 1):
+        if (len(book.authors) > 1): # If a book has multiple authors
             print(book.title + " (" + book.publication_year + ") by " +  book.authors[0].given_name, 
                     book.authors[0].surname +" and "+ book.authors[1].given_name, book.authors[1].surname)
         else:
             print(book.title + " (" + book.publication_year + ") by " +  book.authors[0].given_name, book.authors[0].surname)
 
-#prints the contents of a author object as a single line
+# Prints the contents of an author object as a single line
 def author_print(authors):
     for author in authors:
         print(author.given_name, author.surname)
 
     
-# prints the usage statement when prompted
-if sys.argv[1] == "--help":
+# Prints the usage statement when prompted
+if sys.argv[1] == "--help" or sys.argv[1] == "-h":
     file = open("usage.txt")
     print(file.read())
 
 # Checks for the book command and prints a list of books accordingly    
 elif sys.argv[1] == "book" or sys.argv[1] == "-b":
     length = len(user_input)
-    if length < 3:
-        if length < 2:
-            sort = ""
+    if length < 3: # If the user writes 2 or less inputs using the book command
+        if length < 2: # If the user's input is only the book command
+            sort = "" # Sorting set to default (title sort)
             keyWord = None
         else: 
-            if sys.argv[2] == "--year_sort" or sys.argv[2] == "-ys" or sys.argv[2] == "--title_sort" or sys.argv[2] == "-ts":
+            if sys.argv[2] == "--year_sort" or sys.argv[2] == "-ys" or sys.argv[2] == "--title_sort" or sys.argv[2] == "-ts": # If sorting is specified but there is no keyword
                 sort = sys.argv[2]
                 keyWord = None
             else:
-                sort = ""
-                keyWord = sys.argv[2]
-                
+                sort = "" # If a keyword is given but there is no sorting specified, set to default (title sort)
+                keyWord = sys.argv[2]  
     else:
         sort = sys.argv[3]
         keyWord = sys.argv[2]
 
-    # checks for the sort type    
+    # Print a list of books depending on the sort type and keyword
     if sort == "--title_sort" or sort == "-ts" or sort == "":
         books = data_source.books(keyWord, "title")
         book_print(books)
@@ -60,10 +61,10 @@ elif sys.argv[1] == "book" or sys.argv[1] == "-b":
         print("Invalid sort option") 
         
 
-# checks for the author command and prints a list of authors accordingly
+# Checks for the author command and prints a list of authors accordingly
 elif sys.argv[1] == "author" or sys.argv[1] =="-a":
     length = len(user_input)
-    if length < 2:
+    if length < 2: # If the input is only the author command
         keyWord = None
     else:
         keyWord = sys.argv[2]
