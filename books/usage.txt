@@ -4,10 +4,10 @@ NAME
      bsp - book search program
 
 SYNOPSIS
-	Python3 books.py --help
-	Python3 books.py author [keyword]
-	Python3 books.py book [keyword] [--title_sort | --year_sort]
-	Python3 books.py year <start_year> <end_year>
+	Python3 book.py --help
+	Python3 book.py author [keyword]
+	Python3 book.py book [keyword] [--title_sort | --year_sort]
+	Python3 book.py year <start_year> <end_year>
 
 
 DESCRIPTION
