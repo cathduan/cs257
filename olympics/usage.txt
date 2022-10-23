@@ -1,0 +1,36 @@
+ODBS(1)                              General Commands Manual                             ODBS(1)
+
+NAME
+     odbs - olympics database search
+
+SYNOPSIS
+	Python3 olympics.py --help
+	Python3 olympics.py athletes <NOC>
+	Python3 olympics.py NOCs <medal_type>
+	Python3 olympics.py events <sport> <NOC>
+
+
+DESCRIPTION
+	This command is to help search through a database containing data about athletes who competed in the Olympics. 
+    It allows users to provide a NOC and will return a list of all the athletes that competed for that NOC. This 
+    command also allows users to input a medal type and will return a list of all NOCs with the number of that type 
+    of medal that each NOC has won in descending order. This program also can find all the events under the umbrella of a sport. 
+
+    For instance, were the user to specify "athletes" and "USA", a list of all the athletes who have competed
+    for USA will be returned.
+
+	The following options are available:
+	
+	--help, -h	 	Display this help and exit.
+
+	athletes, -a 		Prints a list of athletes who competed for the given <NOC>. Case sensitive.
+
+	NOCs, -n 		Prints a list of all NOCs and the count of how many of the specified <medal_type> it has won. 
+                                <medal_type> may be either Gold, Silver, Bronze, or NA. Case sensitive.
+
+	events, -e		Prints a list of all the sport events that the given <sport> encompasses for a given <NOC>. 
+                                Important: if the <sport> is more than one word, it must be inputted with the correct spaces and capitialization. 
+                                Case sensitive.
+	
+
+(END)
