@@ -78,9 +78,9 @@ in this list will have the following fields.
     artist_death_year -- (INTEGER) the year the artist died
 
 EXAMPLE:
-    /artists/Monet
+    /artists/<id>
 
-    [{"artists":"Monet"}]
+    [{"id":"17"}]
 
 
 REQUEST: /map	
