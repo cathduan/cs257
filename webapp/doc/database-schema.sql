@@ -18,7 +18,8 @@ CREATE TABLE collections(
 
 CREATE TABLE materials(
     id integer,
-    material_type text
+    material_type text,
+    medium text
 );
 
 --
@@ -31,6 +32,15 @@ CREATE TABLE geographic_locations(
 );
 
 --
+-- Name: geography_types; Type: TABLE; 
+--
+
+CREATE TABLE geography_types(
+    id integer,
+    geography_type text
+);
+
+--
 -- Name: artists; Type: TABLE; 
 --
 
@@ -39,8 +49,8 @@ CREATE TABLE artists(
     artist_surname text,
     artist_firstname text,
     artist_bio text,
-    artist_birthyear integer,
-    artist_deathyear integer
+    artist_birthyear text,
+    artist_deathyear text
 );
 
 --
@@ -52,6 +62,7 @@ CREATE TABLE linking_table(
     department_id integer,
     material_id integer,
     geographic_location_id integer,
+    geography_type_id integer,
     artist_id integer,
     link_resource text
 );
