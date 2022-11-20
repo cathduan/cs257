@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Mockup2</title>
+
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mockup1.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mockup2.css') }}" />
+    <link href="https://fonts.cdnfonts.com/css/noe-display" rel="stylesheet">
+    <link rel="icon" type="image/png" href="all_black.png" sizes="16x16" />
+</head>
+
+<body>
+    <div id = "nav-bar">
+        <div class= "browse-all"> <a href= "mockup2.html">Browse all</a></div>
+        <div class = icon> 
+            <img src = "all_black.png">
+        </div>
+        <div class = "title"><a style= "text-decoration:none;" color: black href= "mockup1.html"> <h1>an intiMET reimagining </h1></span></a></div>
+        <div class = "icon"> <a href= "mockup3.html">Collections</a></div>
+        <div class= "icon"> <a href= "mockup5.html">Artists</a></div>
+    </div>
+
+    <center><h1>Browse All</h1></center>
+
+    <center>
+    <form id="form" role="search">
+        <input type="search" id="query" name="q"
+            placeholder="Search Artwork Titles ..."
+            aria-label="Search through site content">
+    </form>
+    </center>
+
+    <center>
+    <div id = "sort-bar">
+        <div class="dropdown">
+            <button>Collection</button>
+            <a href="http://127.0.0.1:5000/browse-all/collections=american-decorative-arts">American Decorative Arts</a>
+            <a href="http://127.0.0.1:5000/browse-all/collections=american-paintings-and-sculpture">American Paintings and Sculpture</a>
+            <a href="http://127.0.0.1:5000/browse-all/collections=european-sculpture-and-decorative-arts">European Sculpture and Decorative Arts</a>
+            <a href="http://127.0.0.1:5000/browse-all/collections=modern-and-contemporary-art">Modern and Contemporary Art</a>
+            <a href="http://127.0.0.1:5000/browse-all/collections=arms-and-armor">Arms and Armor</a>
+            <a href="http://127.0.0.1:5000/browse-all/collections=medieval-art">Medieval Art</a>
+            <a href="http://127.0.0.1:5000/browse-all/collections=asian-art">Asian Art</a>
+            <a href="http://127.0.0.1:5000/browse-all/collections=costume-institute">Costume Institute</a>
+            <a href="http://127.0.0.1:5000/browse-all/collections=islamic-art">Islamic Art</a>
+            <a href="http://127.0.0.1:5000/browse-all/collections=arts-of-africa-oceania-and-the-americas">Arts of Africa, Oceania, and the Americas</a>
+            <a href="http://127.0.0.1:5000/browse-all/collections=drawings-and-prints">Drawings and Prints</a>
+            <a href="http://127.0.0.1:5000/browse-all/collections=islamic-art">Islamic Art</a>
+        </div>
+        </div>
+
+        <div class="dropdown">
+            <button>Geographic Location</button>
+            <div class="dropdown-options">
+            <a href="#">Dashboard</a>
+            <a href="#">Setting</a>
+            <a href="#">Logout</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button>Material</button>
+            <div class="dropdown-options">
+            <a href="#">Dashboard</a>
+            <a href="#">Setting</a>
+            <a href="#">Logout</a>
+            </div>
+        </div>
+    </div>
+    </center>
+
+    <div id = "image-page">
+        <div class="image">
+            <a href = "mockup6.html">
+                <img src = "almond_blossom.jpg"  alt = "white flower buds with a teal background">
+            </a>
+        </div>
+        <div class = "image-detail"> <ul id = "artwork_info_1"></ul> </div>
+        <div class="image">
+            <a href = "mockup6.html">
+                <img src = "almond_blossom.jpg"  alt = "white flower buds with a teal background">
+            </a>
+        </div>
+        <div class = "image-detail"> <ul id = "artwork_info_2"></ul> </div>
+    </div>
+    <div id = "image-page">
+        <div class="image">
+            <a href = "mockup6.html">
+                <img src = "almond_blossom.jpg"  alt = "white flower buds with a teal background">
+            </a>
+        </div>
+        <div class = "image-detail"> <ul id = "artwork_info_3"></ul> </div>
+        <div class="image">
+            <a href = "mockup6.html">
+                <img src = "almond_blossom.jpg"  alt = "white flower buds with a teal background">
+            </a>
+        </div>
+        <div class = "image-detail"> <ul id = "artwork_info_4"></ul> </div>
+    </div>
+
+
+    <div id = "contact-info">
+        <h4>Contact Us</h4>
+        <p> hehehehe</p>
+    </div>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='mockup2.js') }}" ></script>
+</body>

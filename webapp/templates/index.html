@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Mockup1</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mockup1.css') }}" />
+    <link href="https://fonts.cdnfonts.com/css/noe-display" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename= 'all_black.png')}}" />
+    
+
+    <!-- <script type="text/javascript" src="mockup1.js"></script> -->
+</head>
+
+<body>
+    <div id = "nav-bar">
+        <div class= "browse-all"> <a href= "/browse-all">Browse all</a></div>
+        <div class = icon> 
+            <img src = "{{ url_for('static', filename= 'all_black.png')}}">
+        </div>
+        <div class = "title"><a style= "text-decoration:none;" color: black href= "/"> <h1>an intiMET reimagining </h1></span></a></div>
+        <div class = "icon"> <a href= "/collections">Collections</a></div>
+        <div class= "icon"> <a href= "/artists">Artists</a></div>
+    </div>
+    
+    <div id = "greeting">
+        <h2><center>welcome to an intimate art experience,</center></h2>
+        <h4 ><center> explore The Metropolitan Museum of Art's galleries like never before. </center></h4>
+    </div>
+      
+
+
+    <div id= "main-page">
+        <div class="featured-image">
+            <a href = "/artwork">
+                <img src =  "{{ url_for('static', filename= 'almond_blossom.jpg')}}"  alt = "white flower buds with a teal background">
+            </a>
+            <div class = "featured-image-text">Featured Image of the Day!</div>
+        </div>
+        <div class="map">
+            <a href = "mockup8.html">
+                <img src = "{{ url_for('static', filename= 'almond_blossom.jpg')}}"  alt = "white flower buds with a teal background">
+            </a>
+            <div class = "map-image-text">Mapping Artworks</div>
+        </div>
+        <div class="randomizer">
+            <a href = "mockup6.html">
+                <img src = "{{ url_for('static', filename= 'almond_blossom.jpg')}}"  alt = "white flower buds with a teal background">
+            </a>
+            <div class = "randomizer-image-text">Randomizer!</div>
+        </div>
+    </div>
+
+    <div id = "contact-info">
+        <h4>Contact Us!</h4>
+        <p> hehehehe</p>
+    </div>
+
+
+    <script type="text/javascript" src="{{ url_for('static', filename='mockup2.js') }}" ></script>
+   
+
+</body>

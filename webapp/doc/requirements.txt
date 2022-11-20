@@ -1,0 +1,38 @@
+Authors: Cathy Duan and Hannah Moran
+
+This dataset encompasses multiple collections of open-access art pieces from the Metropolitan Museum of Art based in New York City, New York. Information of each art piece is detailed (Object Number, Name, Title, Culture, Medium, Begin Date, End Date, Country, Repository) along with its artist’s information (Display Name, Display Bio, Nationality, Birth Year, End Year). These lists mentioned do not encapsulate all the metadata that is provided. 
+Click the download button on the top right of the webpage to access the dataset. 
+https://www.kaggle.com/datasets/metmuseum/the-metropolitan-museum-of-art-open-access
+
+User Stories:
+1) As an art history student, I can access images from my favorite collections of art so that I can write my paper on them.
+    - Search feature which allows the user to “search by” various filters, one potentially being “collections”. Another feature may be a row of tabs that directs the user to a collection of choice. 
+
+2) As a 10-year-old, I can browse the art collection in a simple manner so that I can discover new artists on an accessible website.
+    - Browsing feature which (potentially) provides preview images for the user to browse accompanied by simple data surrounding it, or no image but information for a casual browsing experience (nothing overwhelming with data). 
+
+3) As a historian, I can utilize the geographic data surrounding art pieces so that I can draw historical conclusions about artists and cultures. 
+    - The mapping feature is provided when viewing specific art pieces that superimpose an art piece’s origin to the user on a global map. 
+
+Use Cases:
+
+1)  Title: Searches
+    Primary Actor: User
+    Scope: Very important
+    Story: On the home page, there will be a search bar near the top of the screen (orientation undecided) which will prompt the user to type text in order to limit the data presented. On a new screen, the data which includes the text the user has typed will be displayed in a manner which includes a preview image of the art with limited but useful metadata surrounding the artwork. The user can then browse their selective data by scrolling down through the page.
+
+
+2)  Title: Sort by
+    Primary Actor: User
+    Scope: Very important
+    Story: On the home page, the user clicks on the “Collections” tab and is brought to a new page that displays each collection as a clickable picture. The user then clicks on the “Drawing and Arts” collection picture and is sent to another page where they can explore the “Drawing and Arts” collection; however, they want to sort the results by year with the most recent artworks presented first. The user clicks on a “Sort-by” button and a drop down of sorting options is shown: “Artist A-Z”, “Artist Z-A”, “Year old-recent”, “Year recent-old”, “Title A-Z”, and “Title Z-A”. When they click on “Year recent-old”, the art displayed on that page are sorted by year, with recent years displayed before older years.
+
+3)  Title: Randomizing
+    Primary Actor: User
+    Scope: Important
+    Story: There will be a feature on its own page which the user can click a “Randomize” button which will draw from our entire database and select a random work of art for the user to view and learn about. The user can additionally scroll below and view similar works of art to the artwork which was randomly selected. 
+
+4)  Title: Sign up/Log in 
+    Primary Actor: User
+    Scope: Low Importance
+    Story: At the top right corner of every page, there will be a hyperlinked text (“Sign up/ Log in”) that prompts the user to sign up or log in if they haven’t already done so. When the user clicks on the text, a pop up page will appear that will allow them to sign up or log in with their email address and give them an option to input their first name. When the user is finished with providing this information along with a password that will be securely stored, the top right corner of every page will now say “Welcome, [Optional Name or email address]”. The benefit of creating and using accounts on this site allows the user to save works that they enjoy. 

@@ -1,0 +1,99 @@
+Authors: Cathy Duan and Hannah Moran
+api-design.txt
+API Design for CS257 Final Project
+
+REQUEST: /home
+GET Parameters
+    search_text (Optional, default: ‘ ‘) -- return only artworks that contain the search text
+
+RESPONSE: the automatic redirection to a browse-all page with a loaded search of the search text. 
+    If no parameter is provided, the home page is displayed.
+
+EXAMPLE:
+    /home?q={Coin}
+    
+    [{"q":"Coin"}]
+
+REQUEST: /browse-all
+GET Parameters
+	search_text (Optional, default: ‘ ‘) -- return only artworks that contain the search text
+
+	material (Optional, default: '') -- return only artworks created of this material
+    
+    geographic_location (Optional, default: '') -- returns only artworks created at a specific geographic location
+    
+    era (Optional, default: '') -- return only artworks that were created during the years that constrain a specific era
+    
+    collection (Optional, default: '') -- return only artworks that are of a specified MET collection
+    
+RESPONSE: a JSON list of dictionaries, each of which represents one artwork, sorted alphabetically by title). Each dictionary 
+in this list will have the following fields.
+    artwork_title -- (TEXT) the artwork's title
+    artist_name -- (TEXT) the artwork's artist's name
+    artwork_date -- (INTEGER) the artwork's creation artwork_date
+    artwork_material -- (TEXT) the artwork's material
+
+EXAMPLE:
+    /browse-all?q=Coin&material=Metal&geographic_location=&era=Realism&collection=American-Decorative-Arts
+	
+    [{"q":"Coin","material":"Metal","geographic_location":"NULL","era":"Realism","collection":"American Decorative Arts"}]
+
+REQUEST:/collections
+GET Parameters
+    collection (Optional, default: '') -- return only artworks that are of a specified MET collection
+RESPONSE: a JSON list of dictionaries, each of which represents one artwork, sorted alphabetically by title). Each dictionary 
+in this list will have the following fields.
+    artwork_title -- (TEXT) the artwork's title
+    artist_name -- (TEXT) the artwork's artist's name
+    artwork_date -- (INTEGER) the artwork's creation artwork_date
+    artwork_material -- (TEXT) the artwork's material
+EXAMPLE:
+    /collections/Drawings-and-Prints
+   [{"collection: Drawings and Prints}]
+
+REQUEST: /eras
+GET Parameters
+    era (Optional, default: '') -- return only artworks that were created during the years that constrain a specific era
+    
+RESPONSE: a JSON list of dictionaries, each of which represents one artwork, sorted alphabetically by title). Each dictionary 
+in this list will have the following fields.
+    artwork_title -- (TEXT) the artwork's title
+    artist_name -- (TEXT) the artwork's artist's name
+    artwork_date -- (INTEGER) the artwork's creation artwork_date
+    artwork_material -- (TEXT) the artwork's material
+
+EXAMPLE:
+    /eras/Realism
+
+    [{"era":"Realism"}]
+
+REQUEST: /artists
+GET Parameters
+    artist (Optional, default: '') -- return only artists of a specified name
+    
+RESPONSE: a JSON list of dictionaries, each of which represents one artwork, sorted alphabetically by title). Each dictionary 
+in this list will have the following fields.
+    artist_surname -- (TEXT) the artist's last name
+    artist_birth_year -- (TEXT) the year the artist was born
+    artist_death_year -- (INTEGER) the year the artist died
+
+EXAMPLE:
+    /artists/<id>
+
+    [{"id":"17"}]
+
+
+REQUEST: /map	
+GET Parameters
+    geographic_location (Optional, default: '') -- returns only artworks created at a specific geographic location
+
+RESPONSE: a JSON list of dictionaries, each of which represents one artwork, sorted alphabetically by title). Each dictionary 
+in this list will have the following fields.
+    artwork_title -- (TEXT) the artwork's title
+    artist_name -- (TEXT) the artwork's artist's name
+    artwork_date -- (INTEGER) the artwork's creation artwork_date
+    artwork_material -- (TEXT) the artwork's material
+    
+EXAMPLE:
+    /map/France
+   [{"geographic_location": "France"}]
