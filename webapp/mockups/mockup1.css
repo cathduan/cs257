@@ -1,0 +1,152 @@
+/*
+   For use with mockup1.html, mockup2.html, mockup3.html, mockup4.html, mockup5.html, mockup6.html, mockup7.html, mockup8.html
+   Cathy Duan and Hannah Moran
+*/
+
+body {
+    padding: 0px;
+    margin:0;
+    background-color: #cdd6d0;
+    font-family: palatino, seriff
+}
+
+a:active, a:visited, a:link {
+    color: black;
+    text-decoration: none;
+}
+/* a:visited{
+    color:black;
+}
+a:link {
+    color: rgb(0, 0, 0); 
+    text-decoration: none;
+  } */
+
+#main-page {
+    width: 100%;
+    height: 500px;
+    
+}
+
+.featured-image{
+    width: 65%;
+    height: 60%;
+    float: left;
+    font-size: 24pt;
+    color: rgb(255, 255, 255);
+    background-image: url("wombat.jpg");
+    background-position: center;
+    position: relative;
+    text-align: center;
+}
+
+.featured-image-text {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+    border: 5px solid #000;
+}
+
+.map {
+    width: 30%;
+    height: 30%;
+    float:right;
+    font-size: 16pt;
+    color: rgb(255, 255, 255);
+    background-image: url("wombat.jpg");
+    background-position: center;
+    position: relative;
+    text-align: center;
+}
+
+.map-image-text {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+}
+
+.randomizer {
+    width: 30%;
+    height: 30%;
+    float:right;
+    font-size: 16pt;
+    color: white;
+    background-image: url("wombat.jpg");
+    background-position: center;
+    position: relative;
+    text-align: center;
+}
+
+.randomizer-image-text {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+}
+
+#greeting{
+    position: relative;
+    /*top: 70%; */
+    /* display: block; */
+    margin-top: 2%;
+    /* position: relative;
+    top: 10%; */
+}
+
+#nav-bar {
+    display: flex;
+    background-color: #4d7298;
+    border: 0px;
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+.browse-all{
+    position: relative;
+    float: left;
+    left: 10px;
+    width: 30%;
+    height: 10%;
+    line-height: 80px;
+    /* text-align: center ; */
+    vertical-align: middle;
+}
+.icon{
+    width: 8%;
+    height: 20%;
+    line-height: 80px;
+    float: right;
+    text-align: right ;
+    vertical-align: middle;
+}
+.title{
+    position: relative;
+    left: 10px;
+    width: 30%;
+    float: center;
+    font-family: 'Noe Display', sans-serif;                  
+}
+.icon img{
+    /* float: left; */
+    width: 45px;
+    height: 45px;
+    border: 0px;
+    line-height: 80px;
+    vertical-align: middle;
+}
+
+
+
+#contact-info{
+    position: fixed;
+    top: 90%;
+    left: 0;
+    background-color:#B0BFB5;
+    /* padding : 1px; */
+    width: 100%;
+}

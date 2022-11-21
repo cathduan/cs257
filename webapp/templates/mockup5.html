@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Artists</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mockup1.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mockup5.css') }}" />
+    <link href="https://fonts.cdnfonts.com/css/noe-display" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename= 'heart.png')}}" />
+</head>
+
+<body>
+    <div id = "nav-bar">
+        <div class= "browse-all"> <a href= "/browse-all">Browse all</a></div>
+        <div class = icon> 
+            <img src = "{{ url_for('static', filename= 'heart.png')}}">
+        </div>
+        <div class = "title"><a style= "text-decoration:none;" color: black href= "/"> <h1>an intiMET reimagining </h1></span></a></div>
+        <div class = "icon"> <a href= "/collections">Collections</a></div>
+        <div class= "icon"> <a href= "/artists">Artists</a></div>
+    </div>
+
+    <center><h1>Artists</h1></center>
+    <center><h3><i>Search by an artist's surname below, or browse through all artists on this page. Select the painting icon to view more information.</i></h3></center>
+
+    <center>
+        <form id="form" role="search">
+            <input type="search" id="query" name="q"
+                placeholder="Search Surnames..."
+                aria-label="Search through site content">
+        </form>
+    </center>
+
+    <div id = "image-page">
+        <div class="image">
+            <img id = "Img" src = "{{ url_for('static', filename= 'frog.png')}}"  onClick = "clickImage1Function()" alt = "white flower buds with a teal background">
+        </div>
+        <div class = "image-detail"> <ul id = "artist_info_1"></ul></div>
+
+        <div class="image">
+           <img id = "Img" src = "{{ url_for('static', filename= 'sun.png')}}"  onClick = "clickImage2Function()" alt = "white flower buds with a teal background">
+        </div>
+        <div class = "image-detail"> <ul id = "artist_info_2"></ul></div>
+    </div>
+
+    <div id = "image-page">
+        <div class="image">
+            <img id = "Img" src = "{{ url_for('static', filename= 'flower.png')}}"  onClick = "clickImage3Function()" alt = "white flower buds with a teal background">
+        </div>
+        <div class = "image-detail"> <ul id = "artist_info_3"></ul></div>
+
+        <div class="image">
+                <img id = "Img" src = "{{ url_for('static', filename= 'heart.png')}}"  onClick = "clickImage4Function()" alt = "white flower buds with a teal background">
+            </div>
+        <div class = "image-detail"> <ul id = "artist_info_4"></ul></div>
+    </div>
+
+    <div>
+        <center>
+        <button id="previousPageEvent" onclick = "previousPageEvent()">
+            Previous Page
+        </button>
+        <button id="nextPageEvent" onclick = "nextPageEvent()">
+            Next Page
+        </button>
+        </center>
+    </div>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='mockup5.js') }}" ></script>
+
+</body>
+
+</html>

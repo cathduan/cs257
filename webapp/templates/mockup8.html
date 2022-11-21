@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Mockup6</title>
+    <link rel="stylesheet" href="mockup1.css" type="text/css" />
+    <link href="https://fonts.cdnfonts.com/css/noe-display" rel="stylesheet">
+    <link rel="icon" type="image/png" href="all_black.png" sizes="16x16" />
+</head>
+
+<body>
+<cd> Authors: Cathy Duan and Hannah Moran
+    api-design.txt
+    API Design for CS257 Final Project
+    
+    REQUEST: /
+    GET Parameters
+        search_text (Optional, default: ‘ ‘) -- return only artworks that contain the search text
+    
+    RESPONSE: the automatic redirection to a browse-all page with a loaded search of the search text. 
+        If no parameter is provided, the home page is displayed.
+        
+    
+    REQUEST: /browse-all
+    GET Parameters
+        search_text (Optional, default: ‘ ‘) -- return only artworks that contain the search text
+    
+        material (Optional, default: '') -- return only artworks created of this material
+        
+        geographic_location (Optional, default: '') -- returns only artworks created at a specific geographic location
+        
+        collection (Optional, default: '') -- return only artworks that are of a specified MET collection
+        
+    RESPONSE: a JSON list of dictionaries, each of which represents one artwork, sorted alphabetically by title). Each dictionary 
+    in this list will have the following fields.
+        artwork_title -- (TEXT) the artwork's title
+        artist_name -- (TEXT) the artwork's artist's name
+        artwork_date -- (INTEGER) the artwork's creation artwork_date
+        artwork_material -- (TEXT) the artwork's material
+    
+    EXAMPLE:
+        /browse-all?material=metal
+        [{"material":"metal"}]
+    
+        /browse-all?geographic_location=france
+        [{"geographic_location":"france"}]
+    
+        /browse-all?collection=american-decorative-arts
+        [{"collection":"american decorative arts"}]
+    
+        /browse-all?q=female
+        [{"q":"female"}]
+    
+    REQUEST:/collections
+    GET Parameters
+        collection (Optional, default: '') -- return only artworks that are of a specified MET collection
+    RESPONSE: a JSON list of dictionaries, each of which represents one artwork, sorted alphabetically by title). Each dictionary 
+    in this list will have the following fields.
+        artwork_title -- (TEXT) the artwork's title
+        artist_name -- (TEXT) the artwork's artist's name
+        artwork_date -- (INTEGER) the artwork's creation artwork_date
+        artwork_material -- (TEXT) the artwork's material
+    EXAMPLE:
+        /collections/drawings-and-prints
+       [{"collection: drawings and prints}]
+    
+    REQUEST: /artists
+    GET Parameters
+        artist (Optional, default: '') -- return only artists of a specified name
+        
+    RESPONSE: a JSON list of dictionaries, each of which represents one artwork, sorted alphabetically by title). Each dictionary 
+    in this list will have the following fields.
+        artist_surname -- (TEXT) the artist's last name
+        artist_birth_year -- (TEXT) the year the artist was born
+        artist_death_year -- (INTEGER) the year the artist died
+    
+    EXAMPLE:
+        /artists/<id>
+    
+        [{"id":"17"}]
+    
+    
+        </cd>
+</body>
+
+</html>

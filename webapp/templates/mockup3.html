@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Collections</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mockup1.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mockup3.css') }}" />
+    <link href="https://fonts.cdnfonts.com/css/noe-display" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename= 'heart.png')}}" />
+
+</head>
+
+<body>
+    <div id = "nav-bar">
+        <div class= "browse-all"> <a href= "/browse-all">Browse all</a></div>
+        <div class = icon> 
+            <img src = "{{ url_for('static', filename= 'heart.png')}}">
+        </div>
+        <div class = "title"><a style= "text-decoration:none;" color: black href= "/"> <h1>an intiMET reimagining </h1></span></a></div>
+        <div class = "icon"> <a href= "/collections">Collections</a></div>
+        <div class= "icon"> <a href= "/artists">Artists</a></div>
+    </div>
+
+    <center><h1>Collections</h1></center>
+    <center><h3><i>Click on a collection below to explore the MET's departments</i></h3></center>
+
+
+    <div id = "collections">
+        <div id = "collection_names"></div>
+            <!-- <div class="collection-image">
+                <a href = "mockup2.html">
+                    <img src = "almond_blossom.jpg"  alt = "white flower buds with a teal background">
+                </a>
+                <div class = "collection-image-text">Collection 2</div>
+            </div> -->
+        </div>
+    
+    
+
+        <script type="text/javascript" src="{{ url_for('static', filename='mockup3.js') }}" ></script>
+    </body>
+    
+    </html>
